@@ -16,7 +16,7 @@ build:
     VERSION=$(just get-version)
     echo "Logging in to ECR..."
     aws ecr get-login-password --region {{region}} | docker login --username AWS --password-stdin {{registry}}
-    
+
     echo "Building Docker image version: $VERSION..."
     docker buildx build -f "Dockerfile" \
         --platform=linux/amd64 \
@@ -24,5 +24,3 @@ build:
         --build-arg BUILD_VERSION=$VERSION \
         --provenance=false \
         --output type=image,push=true,oci-mediatypes=false,compression=gzip,compression-level=9,force-compression=true .
-
-
