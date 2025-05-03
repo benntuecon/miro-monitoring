@@ -5,7 +5,7 @@ include "root" {
 terraform {
   source = "terraform-aws-modules/lambda/aws//."
   # Pin to a specific version for production stability. Find latest: https://registry.terraform.io/modules/terraform-aws-modules/lambda/aws/latest
-  version = "~> 7.3" 
+  version = "~> 7.3"
 }
 
 # Define dependencies on other modules
@@ -26,7 +26,7 @@ dependency "cache" {
   mock_outputs = {
     elasticache_cluster_address = ["miro-cache-dev.mock.cache.amazonaws.com"]
     # Use the primary_endpoint_address if available in the cache module's outputs
-    # elasticache_primary_endpoint_address = "miro-cache-dev.mock.cache.amazonaws.com" 
+    # elasticache_primary_endpoint_address = "miro-cache-dev.mock.cache.amazonaws.com"
   }
   mock_outputs_allowed_terraform_commands = ["init", "validate", "plan"]
 }
@@ -155,4 +155,4 @@ output "lambda_function_arn" {
 # Expose locals from the included env.hcl file for use in this file
 locals {
   env = read_terragrunt_config(find_in_parent_folders("env.hcl")).locals
-} 
+}

@@ -6,11 +6,11 @@ terraform {
   source = "terraform-aws-modules/vpc/aws//."
   # Lock to a specific version for stability
   # Check the Terraform Registry for the latest version: https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest
-  # version = "5.8.1" 
+  # version = "5.8.1"
 }
 
 dependency "account" {
-  config_path = "../.." 
+  config_path = "../.."
   mock_outputs = {
     aws_account_id = "123456789012" # Mock output for planning if needed
   }
@@ -52,4 +52,4 @@ inputs = {
 # Expose locals from the included env.hcl file
 locals {
   env = read_terragrunt_config(find_in_parent_folders("env.hcl")).locals
-} 
+}

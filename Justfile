@@ -16,7 +16,7 @@ build:
     VERSION=$(just get-version)
     echo "Logging in to ECR..."
     aws ecr get-login-password --region {{region}} | docker login --username AWS --password-stdin {{registry}}
-    
+
     echo "Building Docker image version: $VERSION..."
     docker buildx build -f "Dockerfile" \
         --platform=linux/amd64 \
@@ -73,7 +73,7 @@ infra-apply-module-auto module:
     fi
 
 # Deploy only Lambda with the current version after building
-deploy-lambda: 
+deploy-lambda:
     #!/usr/bin/env bash
     set -e
     VERSION=$(just get-version)
@@ -120,8 +120,10 @@ bump type="":
     @echo "Bumping version..."
     @uv run cz bump {{type}}
 
+# Create a conventional commit using cz
+commit:
+    @uv run cz commit
+
 # Show current version
 version:
     @echo "Current version: $(just get-version)"
-
-

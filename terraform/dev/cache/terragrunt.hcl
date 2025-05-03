@@ -15,7 +15,7 @@ dependency "vpc" {
     vpc_id          = "vpc-1234567890abcdef0"
     private_subnets = ["subnet-123", "subnet-456"]
     # Add vpc_cidr_block mock for cache module validation if needed by the specific module version
-    vpc_cidr_block  = "10.0.0.0/16" 
+    vpc_cidr_block  = "10.0.0.0/16"
   }
   mock_outputs_allowed_terraform_commands = ["init", "validate", "plan"]
 }
@@ -51,7 +51,7 @@ inputs = {
       protocol                 = "tcp"
     }
   }
-  
+
   # allowed_security_group_ids = [] # Add any other security groups that need access if necessary
 
   tags = merge(
@@ -76,4 +76,4 @@ locals {
 #     name  = "maxmemory-policy"
 #     value = "allkeys-lru"
 #   }
-# } 
+# }

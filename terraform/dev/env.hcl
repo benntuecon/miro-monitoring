@@ -25,4 +25,4 @@ locals {
   lambda_image_tag     = get_env("TF_VAR_lambda_image_tag", "latest")
   lambda_ecr_repo_name = "personal_project/miro"
 
-} 
+}
